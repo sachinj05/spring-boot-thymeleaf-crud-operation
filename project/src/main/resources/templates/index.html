@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Employee</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <div class="container my-2" align="center">
+      <h3>Employee List</h3>
+      <a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3"
+        >Add Employee</a
+      >
+      <table
+        style="width: 100%"
+        border="1"
+        class="table table-striped table-responsive-md">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Company Name</th>
+            <th>Salary</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="employee:${allemplist}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.email}"></td>
+
+            <td th:text="${employee.address}"></td>
+            <td th:text="${employee.phoneno}"></td>
+            <td th:text="${employee.age}"></td>
+
+            <td th:text="${employee.gender}"></td>
+            <td th:text="${employee.companyName}"></td>
+            <td th:text="${employee.salary}"></td>
+
+            <td>
+              <a
+                th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
+                class="btn btn-primary"
+                >Update</a
+              >
+              <a
+                th:href="@{/deleteEmployee/{id}(id=${employee.id})}"
+                class="btn btn-danger"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
